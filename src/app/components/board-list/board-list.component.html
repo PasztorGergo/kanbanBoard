@@ -1,1 +1,3 @@
-<p>board-list works!</p>
+<main cdkDropList [cdkDropListData]="boards">
+    <app-board cdkDrag *ngFor="let board of boards | async" [board]="board"></app-board>
+</main>

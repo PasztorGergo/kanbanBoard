@@ -1,1 +1,9 @@
-<p>board works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{board.boardName}}</mat-card-title>
+        <mat-card-subtitle>{{board.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <app-task *ngFor="let task of board.taskArray" [task]="task"></app-task>
+    </mat-card-content>
+</mat-card>

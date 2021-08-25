@@ -1,0 +1,7 @@
+mat-card{
+    width: clamp(200px, 30rem, 20vw);
+    background-color: #001a2b;
+    &,*{
+        color: #f0f0f0;
+    }
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-board-list',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardListComponent implements OnInit {
 
-  constructor() { }
+  boards: Observable<any>;
+  constructor(private dbService: DataService) { }
 
   ngOnInit(): void {
+    this.boards = this.dbService.getBoards();
   }
 
 }

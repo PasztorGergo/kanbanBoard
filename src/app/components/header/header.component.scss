@@ -24,4 +24,7 @@ mat-toolbar{
             }
         }
     }
+    ::selection{
+        visibility: hidden;
+    }
 }
