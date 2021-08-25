@@ -1,0 +1,27 @@
+mat-toolbar{
+    justify-content: space-between;
+    .brand{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .links{
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        list-style: none;
+        flex: 0.3 0.25 0;
+        li{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            span{
+                font-size: 0.7rem;
+            }
+        }
+    }
+}

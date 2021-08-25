@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "firstspark-6608d": {
+      "hosting": {
+        "kanbanBoard": [
+          "firstspark-6608d"
+        ]
+      }
+    }
+  }
+}
