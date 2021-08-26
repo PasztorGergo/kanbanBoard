@@ -1,0 +1,8 @@
+<div class="btn-container">
+    <button mat-flat-button color="accent" (click)="canDelete ? onDelete() : onPrepareDelete()">
+        <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-flat-button color="warn" (click)="onCancel()" *ngIf="canDelete">
+        Cancel
+    </button>
+</div>

@@ -4,4 +4,8 @@ mat-card{
     &,*{
         color: #f0f0f0;
     }
+    mat-card-actions{
+        width: 100%;
+        padding: 0.25rem 0.5rem;
+    }
 }

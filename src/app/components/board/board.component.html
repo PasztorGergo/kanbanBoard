@@ -6,4 +6,7 @@
     <mat-card-content>
         <app-task *ngFor="let task of board.taskArray" [task]="task"></app-task>
     </mat-card-content>
+    <mat-card-actions>
+        <app-delete-button (delete)="handleDelete()"></app-delete-button>
+    </mat-card-actions>
 </mat-card>

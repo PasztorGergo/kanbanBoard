@@ -1,5 +1,18 @@
 main{
     padding: 2rem 5rem;
     display: flex;
-    height: 70vh;
+    height: auto;
+    gap: 3rem;
+    .board-creator{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: clamp(200px, 30rem, 20vw);
+        border: 4px #5f5f5f dashed;
+        border-radius: 0.7rem;
+        button{
+            background-color: #468a44;
+            color: #f0f0f0;
+        }
+    }
 }
