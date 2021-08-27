@@ -1,4 +1,4 @@
 export interface Task{
-    task:string,
-    lableColor:string
+    taskName:string,
+    labelColor:string
 }

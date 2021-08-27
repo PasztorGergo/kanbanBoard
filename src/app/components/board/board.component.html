@@ -3,10 +3,11 @@
         <mat-card-title>{{board.boardName}}</mat-card-title>
         <mat-card-subtitle>{{board.id}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-        <app-task *ngFor="let task of board.taskArray" [task]="task"></app-task>
+    <mat-card-content cdkDropList [cdkDropListData]="board.taskArray" (cdkDropListDropped)="drop($event)">
+        <app-task cdkDrag *ngFor="let task of board.taskArray" [task]="task"></app-task>
     </mat-card-content>
     <mat-card-actions>
         <app-delete-button (delete)="handleDelete()"></app-delete-button>
+        <button mat-stroked-button color="primary" (click)="addTask()"><mat-icon>add</mat-icon></button>
     </mat-card-actions>
 </mat-card>

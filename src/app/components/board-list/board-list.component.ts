@@ -20,7 +20,7 @@ export class BoardListComponent implements OnInit {
     this.dbService.getBoards().subscribe(x => this.boards = x);
   }
   onAddBoard(boardName : string){
-    const board : Board= {boardName:boardName, taskArray:[{task:"Hello",lableColor:"yellow"}], priority: this.boards.length};
+    const board : Board= {boardName:boardName, taskArray:[{taskName:"Hello",labelColor:"yellow"}], priority: this.boards.length};
     this.dbService.addBoard(board);
   }
   openCreatorDialog(){
@@ -35,8 +35,7 @@ export class BoardListComponent implements OnInit {
     });
   }
   drop(event:CdkDragDrop<Board[]>){
-    console.log(event.previousIndex,event.currentIndex)
     moveItemInArray(this.boards,event.previousIndex,event.currentIndex);
-    //this.dbService.sortBoards(this.boards);
+    this.dbService.sortBoards(this.boards);
   }
 }

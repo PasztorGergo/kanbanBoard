@@ -14,7 +14,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {A11yModule} from '@angular/cdk/a11y';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatButtonToggleModule} from "@angular/material/button-toggle"
 
 import {AngularFireModule} from "@angular/fire/compat";
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -24,7 +25,9 @@ import { BoardListComponent } from './components/board-list/board-list.component
 import { BoardComponent } from './components/board/board.component';
 import { TaskComponent } from './components/task/task.component';
 import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
-import { CreatorDialogComponent } from './dialogs/creator-dialog/creator-dialog.component'
+import { CreatorDialogComponent } from './dialogs/creator-dialog/creator-dialog.component';
+import { TaskDialogComponent } from './dialogs/task-dialog/task-dialog.component';
+import { TaskEditDialogComponent } from './dialogs/task-edit-dialog/task-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { CreatorDialogComponent } from './dialogs/creator-dialog/creator-dialog.
     BoardComponent,
     TaskComponent,
     DeleteButtonComponent,
-    CreatorDialogComponent
+    CreatorDialogComponent,
+    TaskDialogComponent,
+    TaskEditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,8 @@ import { CreatorDialogComponent } from './dialogs/creator-dialog/creator-dialog.
     MatInputModule,
     FormsModule,
     A11yModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,3 @@
-<mat-card [ngStyle]="{'background':task.lableColor}">
-    <mat-card-title>{{task.task}}</mat-card-title>
+<mat-card [ngStyle]="{'background':task.labelColor}" (click)="editTask()">
+    <mat-card-title>{{task.taskName}}</mat-card-title>
 </mat-card>

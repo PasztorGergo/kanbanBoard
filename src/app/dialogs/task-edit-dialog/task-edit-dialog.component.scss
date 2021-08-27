@@ -1,0 +1,33 @@
+div[mat-dialog-content]{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 3rem;
+    margin: 2rem 0;
+    background-color: #f1f1f1;
+    border-radius: 0.5em;
+    padding: 1em 2em;
+    mat-button-toggle-group{
+        align-self: center;
+        *[value="purple"]{
+            color: #773377;
+        }
+        *[value="yellow"]{
+            color: #777033;
+        }
+        *[value="blue"]{
+            color: #335c77;
+        }
+        *[value="green"]{
+            color: #337733;
+        }
+        *[value="red"]{
+            color: #773333;
+        }
+        *[value="gray"]{
+            color: #505050;
+        }
+
+    }
+}

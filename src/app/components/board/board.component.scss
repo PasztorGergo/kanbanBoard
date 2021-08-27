@@ -1,8 +1,14 @@
 mat-card{
-    width: clamp(200px, 30rem, 20vw);
+    width: 20vw;
     background-color: #001a2b;
     &,*{
         color: #f0f0f0;
+    }
+    mat-card-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 1em;
     }
     mat-card-actions{
         width: 100%;

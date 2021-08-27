@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Board } from '../models/board.model';
+import { Task } from '../models/task.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,5 +27,18 @@ export class DataService {
     const refs = boards.map(b => db.collection('Boards').doc(b.id));
     refs.forEach((ref, idx) => batch.update(ref,{priority: idx}));
     batch.commit();
+  }
+
+  addTask(board:Board){
+    this.db.collection('Boards').doc(board.id).update({taskArray:board.taskArray})
+  }
+  sortTasks(board:Board){
+    const db = this.db.firestore
+    const batch = db.batch();
+    batch.update(db.collection('Boards').doc(board.id),{taskArray:board.taskArray})
+    batch.commit();
+  }
+  updateTask(board:Board){
+    return this.db.collection('Boards').doc(board.id).update({taskArray:board.taskArray});
   }
 }
