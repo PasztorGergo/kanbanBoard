@@ -1,7 +1,7 @@
 main{
     padding: 2rem 5rem;
     display: flex;
-    height: auto;
+    min-height: 30vh;
     gap: 3rem;
     .board-creator{
         display: flex;

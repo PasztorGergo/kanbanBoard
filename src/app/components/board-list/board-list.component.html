@@ -1,5 +1,5 @@
 <main cdkDropList [cdkDropListData]="boards" (cdkDropListDropped)="drop($event)">
-    <app-board cdkDrag *ngFor="let board of boards" [board]="board"></app-board>
+        <app-board cdkDrag cdkDragPreviewContainer="parent" *ngFor="let board of boards" [board]="board"></app-board>
     <div class="board-creator">
         <button mat-flat-button (click)="openCreatorDialog()">
             Creat Board

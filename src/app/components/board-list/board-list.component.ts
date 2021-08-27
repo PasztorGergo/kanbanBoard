@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreatorDialogComponent } from 'src/app/dialogs/creator-dialog/creator-dialog.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Board } from 'src/app/models/board.model';
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-board-list',
@@ -12,15 +13,14 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class BoardListComponent implements OnInit {
 
-  boards: Array<any>;
-  sub : Subscription;
+  boards: Array<Board>;
   constructor(private dbService: DataService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.sub = this.dbService.getBoards().subscribe(x => this.boards = x);
+    this.dbService.getBoards().subscribe(x => this.boards = x);
   }
   onAddBoard(boardName : string){
-    const board = {boardName:boardName, taskArray:["Hello"]};
+    const board : Board= {boardName:boardName, taskArray:[{task:"Hello",lableColor:"yellow"}], priority: this.boards.length};
     this.dbService.addBoard(board);
   }
   openCreatorDialog(){
@@ -34,8 +34,9 @@ export class BoardListComponent implements OnInit {
         this.onAddBoard(data);
     });
   }
-  drop(event:CdkDragDrop<any[]>){
+  drop(event:CdkDragDrop<Board[]>){
+    console.log(event.previousIndex,event.currentIndex)
     moveItemInArray(this.boards,event.previousIndex,event.currentIndex);
-    this.dbService.sortBoards(this.boards);
+    //this.dbService.sortBoards(this.boards);
   }
 }
