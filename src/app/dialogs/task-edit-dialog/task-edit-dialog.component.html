@@ -16,4 +16,5 @@
 <div mat-dialog-actions>
     <button mat-stroked-button color="accent" [mat-dialog-close]="data">Edit task</button>
     <button mat-raised-button color="warn" (click)="OnNoClick()">Cancel</button>
+    <app-delete-button (delete)="deleteTask()"></app-delete-button>
 </div>

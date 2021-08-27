@@ -11,10 +11,9 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class TaskComponent implements OnInit {
 
-  @Output() edit = new EventEmitter<Task>();
   @Input() task : Task;
 
-  constructor(private dialog:MatDialog, private dbService: DataService) { }
+  constructor(private dialog:MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -25,8 +24,7 @@ export class TaskComponent implements OnInit {
       minHeight:"45vh"
     });
     dialogRef.afterClosed().subscribe(data => {
-      if(data)
-        this.edit.emit(data)
+      if(data){}
     })
   }
 }

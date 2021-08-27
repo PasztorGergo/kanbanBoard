@@ -17,4 +17,7 @@ export class TaskEditDialogComponent implements OnInit {
   OnNoClick(){
     this.dialogRef.close();
   }
+  deleteTask(){
+    
+  }
 }

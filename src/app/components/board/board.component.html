@@ -4,7 +4,8 @@
         <mat-card-subtitle>{{board.id}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content cdkDropList [cdkDropListData]="board.taskArray" (cdkDropListDropped)="drop($event)">
-        <app-task cdkDrag *ngFor="let task of board.taskArray" [task]="task"></app-task>
+        <app-task cdkDrag *ngFor="let task of board.taskArray" [task]="task"
+        (click)="editTask(task)"></app-task>
     </mat-card-content>
     <mat-card-actions>
         <app-delete-button (delete)="handleDelete()"></app-delete-button>

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent } from 'src/app/dialogs/task-dialog/task-dialog.component';
 import { Task } from 'src/app/models/task.model';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { TaskEditDialogComponent } from 'src/app/dialogs/task-edit-dialog/task-edit-dialog.component';
 
 @Component({
   selector: 'app-board',
@@ -43,7 +44,18 @@ export class BoardComponent implements OnInit {
     moveItemInArray(this.board.taskArray,event.previousIndex,event.currentIndex);
     this.dbService.sortTasks(this.board)
   }
-  editTask(){
-    
+  editTask(task:Task){
+    const dialogRef = this.dialog.open(TaskEditDialogComponent,{
+      data: task,
+      width:"50vw",
+      minHeight:"45vh"
+    });
+    dialogRef.afterClosed().subscribe(data => {
+      if(data){
+        const indexOf:number = this.board.taskArray.indexOf(task);
+        this.board.taskArray[indexOf] = data;
+        this.dbService.updateTask(this.board);
+      }
+    })
   }
 }
