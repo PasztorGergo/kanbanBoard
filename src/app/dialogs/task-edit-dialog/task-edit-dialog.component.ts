@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Task } from 'src/app/models/task.model';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-task-edit-dialog',
@@ -10,14 +10,12 @@ import { Task } from 'src/app/models/task.model';
 export class TaskEditDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<TaskEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Task) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private dbService:DataService) { }
 
   ngOnInit(): void {
   }
-  OnNoClick(){
-    this.dialogRef.close();
-  }
   deleteTask(){
-    
+    this.dialogRef.close();
+    this.dbService.deleteTask(this.data.board.id,this.data.task);
   }
 }

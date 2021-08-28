@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { Board } from 'src/app/models/board.model';
 import { DataService } from 'src/app/services/data.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,14 +28,15 @@ export class BoardComponent implements OnInit {
     this.dbService.updateBoard(this.board)
   }
   addTask(){
+    var task :Task = {taskName:null, labelColor:null};
     const dialogRef = this.dialog.open(TaskDialogComponent,{
-      data:"",
+      data: task,
       width:"50vw",
       minHeight:"45vh"
     });
     dialogRef.afterClosed().subscribe(task => {
       if(task){
-        this.board.taskArray.push({taskName:task, labelColor:"yellow"});
+        this.board.taskArray.push(task);
         this.dbService.addTask(this.board)
       }
     });
@@ -46,7 +47,7 @@ export class BoardComponent implements OnInit {
   }
   editTask(task:Task){
     const dialogRef = this.dialog.open(TaskEditDialogComponent,{
-      data: task,
+      data: {task: task, board: this.board},
       width:"50vw",
       minHeight:"45vh"
     });

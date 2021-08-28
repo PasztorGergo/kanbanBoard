@@ -17,14 +17,5 @@ export class TaskComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  editTask(){
-    const dialogRef = this.dialog.open(TaskEditDialogComponent,{
-      data: this.task,
-      width:"50vw",
-      minHeight:"45vh"
-    });
-    dialogRef.afterClosed().subscribe(data => {
-      if(data){}
-    })
-  }
+
 }

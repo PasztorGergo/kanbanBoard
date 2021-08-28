@@ -10,7 +10,7 @@ import { Task } from 'src/app/models/task.model';
 export class TaskDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<TaskDialogComponent>,
-  @Inject(MAT_DIALOG_DATA) public data: string) { }
+  @Inject(MAT_DIALOG_DATA) public data: Task) { }
 
   ngOnInit(): void {
   }

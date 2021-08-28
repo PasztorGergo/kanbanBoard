@@ -2,9 +2,9 @@
 <div mat-dialog-content>
     <mat-form-field>
         <mat-label>Type the name here</mat-label>
-        <input matInput [(ngModel)]="data.taskName">
+        <input matInput [(ngModel)]="data.task.taskName">
     </mat-form-field>
-    <mat-button-toggle-group [(ngModel)]="data.labelColor">
+    <mat-button-toggle-group [(ngModel)]="data.task.labelColor">
         <mat-button-toggle value="purple"><mat-icon>lens</mat-icon></mat-button-toggle>
         <mat-button-toggle value="yellow"><mat-icon>lens</mat-icon></mat-button-toggle>
         <mat-button-toggle value="blue"><mat-icon>lens</mat-icon></mat-button-toggle>
@@ -14,7 +14,6 @@
     </mat-button-toggle-group>
 </div>
 <div mat-dialog-actions>
-    <button mat-stroked-button color="accent" [mat-dialog-close]="data">Edit task</button>
-    <button mat-raised-button color="warn" (click)="OnNoClick()">Cancel</button>
+    <button mat-stroked-button color="accent" [mat-dialog-close]="data.task">Edit task</button>
     <app-delete-button (delete)="deleteTask()"></app-delete-button>
 </div>

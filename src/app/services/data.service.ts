@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Board } from '../models/board.model';
 import { Task } from '../models/task.model';
+import firebase from 'firebase/compat/app';
 @Injectable({
   providedIn: 'root'
 })
@@ -40,5 +41,8 @@ export class DataService {
   }
   updateTask(board:Board){
     return this.db.collection('Boards').doc(board.id).update({taskArray:board.taskArray});
+  }
+  deleteTask(boardId:string,task:Task){
+    return this.db.collection('Boards').doc(boardId).update({taskArray: firebase.firestore.FieldValue.arrayRemove(task)});
   }
 }

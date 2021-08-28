@@ -28,6 +28,11 @@ div[mat-dialog-content]{
         *[value="gray"]{
             color: #505050;
         }
-
     }
+}
+div[mat-dialog-actions]{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
 }
