@@ -10,8 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 export class TaskEditDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<TaskEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private dbService:DataService) { }
-
+    @Inject(MAT_DIALOG_DATA) public data: {task,board}, private dbService:DataService) { }
   ngOnInit(): void {
   }
   deleteTask(){

@@ -51,12 +51,11 @@ export class BoardComponent implements OnInit {
       width:"50vw",
       minHeight:"45vh"
     });
+    
     dialogRef.afterClosed().subscribe(data => {
-      if(data){
-        const indexOf:number = this.board.taskArray.indexOf(task);
-        this.board.taskArray[indexOf] = data;
+      if(data)
         this.dbService.updateTask(this.board);
-      }
+      
     })
   }
 }
