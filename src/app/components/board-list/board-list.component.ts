@@ -5,6 +5,7 @@ import { CreatorDialogComponent } from 'src/app/dialogs/creator-dialog/creator-d
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Board } from 'src/app/models/board.model';
 import { Task } from 'src/app/models/task.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-board-list',
@@ -14,10 +15,11 @@ import { Task } from 'src/app/models/task.model';
 export class BoardListComponent implements OnInit {
 
   boards: Array<Board>;
-  constructor(private dbService: DataService, private dialog: MatDialog) { }
+  constructor(private dbService: DataService, private dialog: MatDialog, private auth: AuthService) { }
 
-  ngOnInit(): void {
-    this.dbService.getBoards().subscribe(x => this.boards = x);
+  async ngOnInit() {
+    if(await this.auth.user$)
+      this.dbService.getBoards().subscribe(x => this.boards = x);
   }
   onAddBoard(boardName : string){
     const board : Board= {boardName:boardName, taskArray:[{taskName:"Hello",labelColor:"yellow"}], priority: this.boards.length};

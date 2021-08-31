@@ -19,6 +19,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle"
 
 import {AngularFireModule} from "@angular/fire/compat";
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import {AngularFireAuthModule} from "@angular/fire/compat/auth"
 
 import { HeaderComponent } from './components/header/header.component';
 import { BoardListComponent } from './components/board-list/board-list.component';
@@ -46,6 +47,7 @@ import { TaskEditDialogComponent } from './dialogs/task-edit-dialog/task-edit-di
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
