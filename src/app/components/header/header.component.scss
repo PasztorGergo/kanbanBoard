@@ -15,10 +15,16 @@ mat-toolbar{
         list-style: none;
         flex: 0.3 0.25 0;
         li{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            &,ng-template{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            img{
+                width: clamp(5vw,7vw,80px);
+                border-radius: 50%;
+            }
             span{
                 font-size: 0.7rem;
             }

@@ -40,7 +40,7 @@ import { TaskEditDialogComponent } from './dialogs/task-edit-dialog/task-edit-di
     DeleteButtonComponent,
     CreatorDialogComponent,
     TaskDialogComponent,
-    TaskEditDialogComponent
+    TaskEditDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +58,7 @@ import { TaskEditDialogComponent } from './dialogs/task-edit-dialog/task-edit-di
     FormsModule,
     A11yModule,
     BrowserAnimationsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,9 +12,15 @@
             <mat-icon>language</mat-icon>
             <span>Language</span>
         </li>
+        <li *ngIf="auth.user$ | async as user; else anonym">
+            <img [src]="(auth.user$ | async).photoURL" alt="photo">
+            <span>{{(auth.user$ | async).displayName}}</span>     
+        </li>
         <li>
-            <mat-icon>account_circle</mat-icon>
-            <span>Account</span>     
+            <ng-template #anonym>
+                <mat-icon>account-circle</mat-icon>
+                <span>Account</span>
+            </ng-template>
         </li>
     </ul>
 </mat-toolbar>
