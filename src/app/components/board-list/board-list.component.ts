@@ -17,9 +17,8 @@ export class BoardListComponent implements OnInit {
   boards: Array<Board>;
   constructor(private dbService: DataService, private dialog: MatDialog, private auth: AuthService) { }
 
-  async ngOnInit() {
-    if(await this.auth.user$)
-      this.dbService.getBoards().subscribe(x => this.boards = x);
+  ngOnInit() {
+      this.dbService.getBoards().subscribe(x => this.boards = x)
   }
   onAddBoard(boardName : string){
     const board : Board= {boardName:boardName, taskArray:[{taskName:"Hello",labelColor:"yellow"}], priority: this.boards.length};

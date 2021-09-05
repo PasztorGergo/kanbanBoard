@@ -1,10 +1,9 @@
 <app-header></app-header>
 <div *ngIf="auth.user$ | async as user; else login">
-    <pre>{{user | json}}</pre>
-    <router-outlet></router-outlet>
     <button (click)="auth.signOut()">Sign out</button>
 </div>
 <ng-template #login>
  <button (click)="auth.googleSignin()">Sign In</button>
 </ng-template>
 <button routerLink="boards">Boards</button>
+<router-outlet></router-outlet>

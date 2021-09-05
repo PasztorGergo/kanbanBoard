@@ -13,14 +13,13 @@
             <span>Language</span>
         </li>
         <li *ngIf="auth.user$ | async as user; else anonym">
-            <img [src]="(auth.user$ | async).photoURL" alt="photo">
-            <span>{{(auth.user$ | async).displayName}}</span>     
+            <img [src]="(auth.user$ | async).photoURL" alt="photo" [title]="(auth.user$ | async).displayName">
         </li>
-        <li>
-            <ng-template #anonym>
-                <mat-icon>account-circle</mat-icon>
+        <ng-template #anonym>
+            <li>
+                <mat-icon>account_circle</mat-icon>
                 <span>Account</span>
-            </ng-template>
-        </li>
+            </li>
+        </ng-template>
     </ul>
 </mat-toolbar>

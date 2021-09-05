@@ -4,5 +4,6 @@ export interface Board {
     id?:string,
     boardName:string,
     taskArray:Array<Task>,
-    priority:number;
+    priority:number,
+    uid?:string
 }

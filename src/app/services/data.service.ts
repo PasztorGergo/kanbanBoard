@@ -1,17 +1,30 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Board } from '../models/board.model';
 import { Task } from '../models/task.model';
 import firebase from 'firebase/compat/app';
+import { switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor(private db:AngularFirestore) { }
+  constructor(private db:AngularFirestore, private afAuth: AngularFireAuth) { }
 
   getBoards(){
-    return this.db.collection<Board>('Boards',ref => ref.orderBy('priority','asc')).valueChanges({idField: 'id'});
+    return this.afAuth.authState.pipe(
+      switchMap(user => {
+        if(user){
+          return this.db.collection<Board>('Boards',ref => 
+            ref.where('uid','==',user.uid).orderBy('priority')
+          ).valueChanges({idField:'id'})
+        }
+        else{
+          return [];
+        }
+      })
+    );
   }
   deleteBoard(board:Board){
     return this.db.collection('Boards').doc(board.id).delete();
@@ -19,8 +32,10 @@ export class DataService {
   updateBoard(board:Board){
     return this.db.collection('Boards').doc(board.id).update(board);
   }
-  addBoard(board:Board){
-    return this.db.collection('Boards').add(board);
+  async addBoard(board:Board){
+    return this.db.collection('Boards').add({
+      ...board, uid: (await this.afAuth.currentUser).uid
+    });
   }
   sortBoards(boards:Array<Board>){
     const db = this.db.firestore
