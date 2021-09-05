@@ -1,0 +1,16 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /Users/{userId} {
+        allow write, read: if isOwner(userId);
+    }
+          match /Boards/{document=**}{
+        allow write, read: if true;
+    	}
+
+    // Reusable function to determine document ownership
+    function isOwner(userId) {
+        return request.auth.uid == userId
+    }
+  }
+}
