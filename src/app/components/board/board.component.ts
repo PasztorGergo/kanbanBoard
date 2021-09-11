@@ -36,8 +36,13 @@ export class BoardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(task => {
       if(task){
-        this.board.taskArray.push(task);
-        this.dbService.addTask(this.board)
+        if(task.labelColor)
+          this.board.taskArray.push(task);
+        else{
+          const taskWithColor = {...task, labelColor:"yellow"}
+          this.board.taskArray.push(taskWithColor);
+        }
+        this.dbService.addTask(this.board);
       }
     });
   }

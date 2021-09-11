@@ -32,7 +32,7 @@ export class BoardListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(data => {
       if(data)
-        this.onAddBoard(data);
+          this.onAddBoard(data);
     });
   }
   drop(event:CdkDragDrop<Board[]>){

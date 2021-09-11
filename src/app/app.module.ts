@@ -29,6 +29,7 @@ import { DeleteButtonComponent } from './components/delete-button/delete-button.
 import { CreatorDialogComponent } from './dialogs/creator-dialog/creator-dialog.component';
 import { TaskDialogComponent } from './dialogs/task-dialog/task-dialog.component';
 import { TaskEditDialogComponent } from './dialogs/task-edit-dialog/task-edit-dialog.component';
+import {MatSidenavModule} from '@angular/material/sidenav'
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { TaskEditDialogComponent } from './dialogs/task-edit-dialog/task-edit-di
     A11yModule,
     BrowserAnimationsModule,
     MatButtonToggleModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
