@@ -13,4 +13,30 @@ mat-drawer-container{
             height: 100%;
         }
     }
+    mat-drawer-content{
+        div{
+            height: 100%;
+            margin: 0 auto;
+            .welcome{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 100%;
+                width: 70vw;
+                text-align: center;
+                color: #1212127f;
+                h1{
+                    font-size: 5rem;
+                    font-weight: 700;
+                    line-height: 5rem;
+                }
+                h2{
+                    line-height: 3rem;
+                    font-size: 1rem;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
 }

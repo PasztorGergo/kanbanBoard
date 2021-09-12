@@ -1,6 +1,6 @@
 <app-header (sideToggle)="sideOpen = $event"></app-header>
 <mat-drawer-container autosize>
-    <mat-drawer mode="side" [opened]="sideOpen" >
+    <mat-drawer mode="push" [opened]="sideOpen">
         <div id="content">
             <div *ngIf="auth.user$ | async as user; else login">
                 <button mat-raised-button color="warn" (click)="auth.signOut()">Sign out</button>
@@ -8,10 +8,23 @@
             <ng-template #login>
                 <button mat-raised-button id="signIn" (click)="auth.googleSignin()">Sign In</button>
             </ng-template>
-            <button routerLink="boards" mat-flat-button color="accent">Boards</button>
+            <button *ngIf="!atBoards; else mainPage" (click)="atBoards = !atBoards" routerLink="boards" mat-flat-button color="accent">Boards</button>
+            <ng-template #mainPage><button mat-flat-button color="accent" (click)="atBoards = !atBoards" routerLink="/">Main Page</button></ng-template>
         </div>
     </mat-drawer>
     <mat-drawer-content>
+        <div *ngIf="!atBoards">
+            <div class="welcome" *ngIf="(auth.user$ | async) == null; else back">
+                <h1>Welocme to my site!</h1>
+                <h2>Please log in to continue</h2>
+            </div>
+            <ng-template #back >
+                <div class="welcome">
+                    <h1>Welocme back {{(auth.user$ |async).displayName}}!</h1>
+                    <h2>Have a whale of time</h2>
+                </div>
+            </ng-template>
+        </div>
         <router-outlet></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>
