@@ -29,7 +29,8 @@ import { DeleteButtonComponent } from './components/delete-button/delete-button.
 import { CreatorDialogComponent } from './dialogs/creator-dialog/creator-dialog.component';
 import { TaskDialogComponent } from './dialogs/task-dialog/task-dialog.component';
 import { TaskEditDialogComponent } from './dialogs/task-edit-dialog/task-edit-dialog.component';
-import {MatSidenavModule} from '@angular/material/sidenav'
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { ServiceWorkerModule } from '@angular/service-worker'
 
 @NgModule({
   declarations: [
@@ -61,6 +62,12 @@ import {MatSidenavModule} from '@angular/material/sidenav'
     BrowserAnimationsModule,
     MatButtonToggleModule,
     MatSidenavModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
