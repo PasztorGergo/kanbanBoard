@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreatorDialogComponent } from 'src/app/dialogs/creator-dialog/creator-dialog.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Board } from 'src/app/models/board.model';
-import { Task } from 'src/app/models/task.model';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({

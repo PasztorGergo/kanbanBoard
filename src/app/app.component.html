@@ -8,8 +8,7 @@
             <ng-template #login>
                 <button mat-raised-button id="signIn" (click)="auth.googleSignin()">Sign In</button>
             </ng-template>
-            <button *ngIf="!atBoards; else mainPage" (click)="atBoards = !atBoards" routerLink="boards" mat-flat-button color="accent">Boards</button>
-            <ng-template #mainPage><button mat-flat-button color="accent" (click)="atBoards = !atBoards" routerLink="/">Main Page</button></ng-template>
+            <button [disabled]="(auth.user$ | async) == null" (click)="atBoards = !atBoards" routerLink="boards" mat-flat-button color="accent">Boards</button>
         </div>
     </mat-drawer>
     <mat-drawer-content>
